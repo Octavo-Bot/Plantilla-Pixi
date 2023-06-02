@@ -9,13 +9,21 @@ const app = new Application({
 	height: 480
 });
 
-const clampy: Sprite = Sprite.from("clampy.png");
+Loader.shared.add({url: "./CAT.jpg", name: "Mycat"});
+Loader.shared.add({url: "./clampy.png", name: "Clamply"});
 
-clampy.anchor.set(0.5);
+Loader.shared.onComplete.add(()=>{
+	const clampy: Sprite = Sprite.from("Mycat");
 
-console.log("Hola Mundo!",clampy.width, clampy.height);
+	console.log("Hola Mundo!",clampy.width,clampy.height);
+	
+	
+	//clampy.anchor.set(0);
+	
+	clampy.x = 0;
+	clampy.y = 0;
+	
+	app.stage.addChild(clampy);
+})
 
-clampy.x = 300;
-clampy.y = 300;
-
-app.stage.addChild(clampy);
+Loader.shared.load();
